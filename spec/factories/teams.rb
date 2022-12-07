@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :team do
-    name { "MyString" }
-    description { "MyText" }
+    sequence(:name) { |n| "チーム_#{n}" }
+    description { "チームの説明です" }
   end
 end

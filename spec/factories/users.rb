@@ -1,9 +1,17 @@
 FactoryBot.define do
   factory :user do
-    email { "MyString" }
-    crypted_password { "MyString" }
+    sequence(:email) { |n| "test+#{n}@example.com" }
+    crypted_password { "password" }
     salt { "MyString" }
-    name { "MyString" }
-    description { "MyText" }
+    sequence(:name) { |n| "ハドル#{n}タロウ" }
+    description { "テストユーザーです" }
+
+    trait :user_with_teams do
+      after(:build) do |user|
+        user.teams << create(:team)
+        user.members.first.admin!
+        user.save
+      end
+    end
   end
 end

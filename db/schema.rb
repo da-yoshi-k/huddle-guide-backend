@@ -16,7 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_171246) do
   enable_extension "plpgsql"
 
   create_table "members", force: :cascade do |t|
-    t.integer "role"
+    t.integer "role", default: 0, null: false
     t.uuid "user_id", null: false
     t.uuid "team_id", null: false
     t.datetime "created_at", null: false

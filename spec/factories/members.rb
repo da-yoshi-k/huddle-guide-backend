@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :member do
-    role { 1 }
-    user { nil }
-    team { nil }
+    role { 0 }
+    association :user
+    association :team
   end
 end
