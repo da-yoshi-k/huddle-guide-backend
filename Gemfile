@@ -33,10 +33,12 @@ gem 'rack-cors'
 # JSON serializer
 gem 'alba'
 
+# factory_bot
+gem 'factory_bot_rails'
+
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails', '~> 6.0.0'
-  gem 'factory_bot_rails'
   gem 'dotenv-rails'
   gem 'rubocop'
   gem 'rubocop-rails'
