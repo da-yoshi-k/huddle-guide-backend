@@ -46,6 +46,7 @@ end
 
 group :development do
   gem 'bullet'
+  gem 'annotate'
 end
 
 group :test do
