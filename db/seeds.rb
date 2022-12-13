@@ -1,3 +1,5 @@
+require 'factory_bot_rails'
+
 3.times.each do
   admin_user = FactoryBot.create(:user, :user_with_teams)
   4.times.each do
