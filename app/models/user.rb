@@ -12,6 +12,7 @@
 #  updated_at       :datetime         not null
 #
 class User < ApplicationRecord
+  include JwtToken
   authenticates_with_sorcery!
   has_many :members, dependent: :destroy
   has_many :teams, through: :members, source: :team

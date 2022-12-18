@@ -2,12 +2,15 @@ class Api::V1::AuthenticationsController < Api::V1::BaseController
   # skip_before_action :authenticate
 
   def create
-    user = login(params[:email], params[:password])
+    user = User.authenticate(params[:email], params[:password])
 
-    raise ActiveRecord::RecordNotFound unless user
-
-    json_str = UserResource.new(user).serialize
-    render json: json_str
+    if user
+      token = user.create_tokens
+      json_str = UserResource.new(user).serialize
+      render json: { token: token }
+    else
+      head :unauthorized
+    end
   end
 
   private
