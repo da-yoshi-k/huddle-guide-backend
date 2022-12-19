@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   namespace :api, format: 'json' do
     namespace :v1 do
       resources :works, only: %i[index]
-      resource :users, only: %i[create]
+      resource :users do
+        collection do
+          get 'me'
+        end
+      end
       resource :authentication, only: %i[create]
     end
   end

@@ -1,5 +1,5 @@
 class Api::V1::UsersController < Api::V1::BaseController
-  # skip_before_action :authenticate
+  before_action :authenticate!, only: %i[me]
 
   def create
     user_params = {
@@ -14,6 +14,11 @@ class Api::V1::UsersController < Api::V1::BaseController
     else
       render_400(nil, user.errors.full_messages)
     end
+  end
+
+  def me
+    json_str = UserResource.new(current_user).serialize
+    render json: json_str
   end
 
   private
