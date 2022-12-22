@@ -42,6 +42,12 @@ gem 'sorcery'
 # JSON Web Tokens
 gem 'jwt'
 
+# upload image file
+gem 'carrierwave', '>= 3.0.0.beta', '< 4.0'
+
+# proveider to use AWS
+gem 'fog-aws'
+
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails', '~> 6.0.0'

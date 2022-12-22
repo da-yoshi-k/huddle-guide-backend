@@ -10,6 +10,7 @@ Rails.application.routes.draw do
         end
       end
       resource :authentication, only: %i[create]
+      resources :profile
     end
   end
 end
