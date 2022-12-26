@@ -39,7 +39,7 @@ module HuddleGuideBackend
     config.middleware.use config.session_store, config.session_options
 
     config.api_only = true
-
+    config.time_zone = 'Tokyo'
     config.generators do |g|
       g.test_framework :rspec,
                        view_specs: false,

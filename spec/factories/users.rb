@@ -3,18 +3,19 @@
 # Table name: users
 #
 #  id               :uuid             not null, primary key
-#  email            :string           not null
+#  avatar           :string
 #  crypted_password :string
-#  salt             :string
-#  name             :string           not null
 #  description      :text
+#  email            :string           not null
+#  name             :string           not null
+#  salt             :string
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #
 FactoryBot.define do
   factory :user do
     sequence(:email) { |n| "test+#{n}@example.com" }
-    crypted_password { "password" }
+    password { "password" }
     salt { "MyString" }
     sequence(:name) { |n| "ハドル#{n}タロウ" }
     description { "テストユーザーです" }

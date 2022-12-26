@@ -85,11 +85,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_21_162644) do
   end
 
   create_table "work_steps", force: :cascade do |t|
-    t.bigint "work_id", null: false
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["work_id"], name: "index_work_steps_on_work_id"
   end
 
   create_table "works", force: :cascade do |t|
@@ -122,7 +120,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_21_162644) do
   add_foreign_key "posts", "workshops"
   add_foreign_key "reactions", "posts"
   add_foreign_key "reactions", "users"
-  add_foreign_key "work_steps", "works"
   add_foreign_key "workshops", "teams"
   add_foreign_key "workshops", "work_steps"
   add_foreign_key "workshops", "works"

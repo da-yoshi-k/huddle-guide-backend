@@ -3,15 +3,12 @@
 # Table name: work_steps
 #
 #  id         :bigint           not null, primary key
-#  work_id    :bigint           not null
 #  name       :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 FactoryBot.define do
   factory :work_step do
-    work
-
     trait :waiting do
       name { "待機" }
     end

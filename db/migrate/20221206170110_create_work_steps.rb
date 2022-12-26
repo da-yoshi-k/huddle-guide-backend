@@ -1,7 +1,6 @@
 class CreateWorkSteps < ActiveRecord::Migration[7.0]
   def change
     create_table :work_steps do |t|
-      t.references :work, null: false, foreign_key: true
       t.string :name, null: false
 
       t.timestamps

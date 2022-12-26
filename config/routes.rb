@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       resource :authentication, only: %i[create]
       resources :profile
       resources :teams, only: %i[index create]
+      resources :workshops, only: %i[create show]
     end
   end
 end
