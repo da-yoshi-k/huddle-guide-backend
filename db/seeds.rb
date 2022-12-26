@@ -11,10 +11,7 @@ end
 steps = [:waiting, :being_posted, :presentation, :chatting, :closed]
 
 first_work = FactoryBot.create(:work, :finding_common_interets)
-steps.each{|step|
-  FactoryBot.create(:work_step, step, work: first_work)
-}
 second_work = FactoryBot.create(:work, :good_and_new)
 steps.each{|step|
-  FactoryBot.create(:work_step, step, work: second_work)
+  FactoryBot.create(:work_step, step)
 }
