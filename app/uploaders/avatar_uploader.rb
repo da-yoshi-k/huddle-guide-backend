@@ -18,6 +18,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   def filename
-    "avatar.#{file.extension}" if original_filename.present?
+    time = Time.current
+    "avatar_#{time.strftime("%Y%m%d%H%M%S")}.#{file.extension}" if original_filename.present?
   end
 end
