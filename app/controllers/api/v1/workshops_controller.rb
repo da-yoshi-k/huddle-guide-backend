@@ -2,6 +2,7 @@ class Api::V1::WorkshopsController < Api::V1::BaseController
   before_action :authenticate!
   def show
     workshop = Workshop.where(team_id: current_user.teams).find(params[:id])
+    participants = workshop.users
     json_str = WorkshopResource.new(workshop).serialize
     render json: json_str
   end

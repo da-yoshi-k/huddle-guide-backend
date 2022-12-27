@@ -28,6 +28,7 @@ class Workshop < ApplicationRecord
   has_many :participations
   has_many :messages
   has_many :posts
+  has_many :users, through: :participations
 
   belongs_to :team
   belongs_to :work
