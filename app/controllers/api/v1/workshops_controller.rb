@@ -24,4 +24,16 @@ class Api::V1::WorkshopsController < Api::V1::BaseController
       render_400(nil, workshop.errors.full_messages)
     end
   end
+
+  def update
+    @workshop = Workshop.where(team_id: current_user.teams).find(params[:id])
+    pp @workshop
+    @workshop.update(workshop_update_params)
+  end
+
+  private
+
+  def workshop_update_params
+    params.require(:workshop).permit(:work_step_id, :facilitator, :presenter)
+  end
 end
