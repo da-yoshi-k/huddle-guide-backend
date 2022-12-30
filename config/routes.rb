@@ -12,7 +12,8 @@ Rails.application.routes.draw do
       resource :authentication, only: %i[create]
       resources :profile
       resources :teams, only: %i[index create]
-      resources :workshops, only: %i[create show]
+      resources :workshops, only: %i[create show update]
+      resources :posts, only: %i[index create update]
     end
   end
 end
