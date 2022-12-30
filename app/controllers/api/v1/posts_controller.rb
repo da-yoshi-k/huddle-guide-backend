@@ -28,6 +28,24 @@ class Api::V1::PostsController < Api::V1::BaseController
   end
 
   def update
-    pp params
+    workshop = Workshop.find(params[:posts][:workshop_id])
+    # if params[:post][:id] == 0
+    #   post_params = {
+    #     content: params[:posts][:content],
+    #     user: current_user,
+    #     workshop: workshop
+    #   }
+    #   post = Post.new(post_params)
+    #   post.save
+    # else
+    #   post = current_user.posts.find(params[:posts][:id])
+    #   post.update(post_update_params)
+    # end
+  end
+
+  private
+
+  def post_update_params
+    params.require(:post).permit(:content)
   end
 end
