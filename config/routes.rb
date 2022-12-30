@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resource :users do
         collection do
           get 'me'
+          post 'search'
         end
       end
       resource :authentication, only: %i[create]
