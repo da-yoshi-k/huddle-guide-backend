@@ -24,4 +24,5 @@ class Participation < ApplicationRecord
   belongs_to :workshop
 
   validates :is_active, presence: true
+  validates :user_id, uniqueness: { scope: :workshop_id }
 end

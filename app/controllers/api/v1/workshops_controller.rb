@@ -1,5 +1,12 @@
 class Api::V1::WorkshopsController < Api::V1::BaseController
   before_action :authenticate!
+
+  def index
+    workshops = Workshop.where(teams: current_user.teams).includes([:users]).includes([:work]).includes([:work_step]).includes([:team])
+    json_str = WorkshopResource.new(workshops).serialize
+    render json: json_str
+  end
+
   def show
     workshop = Workshop.where(team_id: current_user.teams).find(params[:id])
     participants = workshop.users
@@ -27,7 +34,6 @@ class Api::V1::WorkshopsController < Api::V1::BaseController
 
   def update
     @workshop = Workshop.where(team_id: current_user.teams).find(params[:id])
-    pp @workshop
     @workshop.update(workshop_update_params)
   end
 
