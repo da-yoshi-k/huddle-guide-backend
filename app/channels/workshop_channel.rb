@@ -7,18 +7,26 @@ class WorkshopChannel < ApplicationCable::Channel
     # Any cleanup needed when channel is unsubscribed
   end
 
-  def test
-    ActionCable.server.broadcast("workshop:#{params[:room]}", { body: "「#{params[:room]}」を購読中です" })
+  def update_work_step(data)
+    content = {
+      type: 'update_work_step',
+      body: {},
+    }
+    ActionCable.server.broadcast("workshop:#{params[:room]}", content)
   end
 
-  def speak(data)
+  def update_presenter(data)
     content = {
-      type: 'chat_message',
-      body: {
-        name: data['name'],
-        message: data['message'],
-        spoke_at: Time.zone.now,
-      },
+      type: 'update_presenter',
+      body: {},
+    }
+    ActionCable.server.broadcast("workshop:#{params[:room]}", content)
+  end
+
+  def end_workshop(data)
+    content = {
+      type: 'end_workshop',
+      body: {},
     }
     ActionCable.server.broadcast("workshop:#{params[:room]}", content)
   end

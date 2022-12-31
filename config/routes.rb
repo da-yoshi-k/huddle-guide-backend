@@ -15,7 +15,9 @@ Rails.application.routes.draw do
       resources :teams do
         resources :members, only: %i[create destroy]
       end
-      resources :workshops, only: %i[create show update]
+      resources :workshops do
+        resources :participations, only: %i[create]
+      end
       resources :posts, only: %i[index create update]
     end
   end

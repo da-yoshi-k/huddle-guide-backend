@@ -22,7 +22,11 @@ class Api::V1::PostsController < Api::V1::BaseController
       post.save
     end
     posts = Post.where(workshop_id: workshop.id)
-
+    content = {
+      type: 'create_post',
+      body: {}
+    }
+    ActionCable.server.broadcast("workshop:#{workshop.id}", content)
     json_str = PostResource.new(posts).serialize
     render json: json_str
   end
