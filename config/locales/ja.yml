@@ -1,0 +1,16 @@
+ja:
+  activerecord:
+    models:
+      user: "ユーザー"
+      team: "チーム"
+      post: "投稿"
+      reaction: "リアクション"
+      work: "ワーク"
+      participation: "参加"
+      message: "チャットメッセージ"
+      workshop: "ワーク"
+    attributes:
+      user:
+        email: "メールアドレス"
+        name: "ニックネーム"
+        description: "自己紹介"
