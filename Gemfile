@@ -48,6 +48,9 @@ gem 'carrierwave', '>= 3.0.0.beta', '< 4.0'
 # proveider to use AWS
 gem 'fog-aws'
 
+# i18n
+gem 'rails-i18n', '~> 7.0.0'
+
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails', '~> 6.0.0'

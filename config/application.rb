@@ -50,5 +50,6 @@ module HuddleGuideBackend
     config.x.cors_allowed_origins = ENV.fetch('CORS_ALLOWED_ORIGINS', 'http://localhost:3000')
     config.x.cors_allowed_dev_origins = ENV.fetch('CORS_ALLOWED_DEV_ORIGINS', 'http://localhost:3000')
 
+    config.i18n.default_locale = :ja
   end
 end
