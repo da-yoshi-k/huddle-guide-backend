@@ -24,4 +24,6 @@ class Message < ApplicationRecord
   belongs_to :workshop
 
   validates :content, presence: true, length: { maximum: 255 }
+
+  scope :recent, -> { order(:created_at) }
 end
