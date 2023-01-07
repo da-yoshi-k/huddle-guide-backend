@@ -7,6 +7,12 @@ class Api::V1::TeamsController < Api::V1::BaseController
     render json: json_str
   end
 
+  def show
+    team = current_user.teams.find(params[:id])
+    json_str = TeamResource.new(team).serialize
+    render json: json_str
+  end
+
   def create
     team_params = {
       name: params[:team][:name],
