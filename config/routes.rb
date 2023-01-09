@@ -18,8 +18,8 @@ Rails.application.routes.draw do
       resources :workshops do
         resources :participations, only: %i[create]
         resources :messages, only: %i[index create]
+        resources :posts, only: %i[index create update]
       end
-      resources :posts, only: %i[index create update]
     end
   end
 end
