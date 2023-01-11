@@ -4,6 +4,7 @@
 #
 #  id          :bigint           not null, primary key
 #  content     :string           not null
+#  level       :integer          default(0)
 #  type        :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null

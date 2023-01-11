@@ -16,7 +16,8 @@ class Api::V1::PostsController < Api::V1::BaseController
       post_params = {
         content: params[:posts][i][:content],
         user: current_user,
-        workshop: workshop
+        workshop: workshop,
+        level: params[:posts][i][:level],
       }
       post = Post.new(post_params)
       post.save
@@ -55,6 +56,6 @@ class Api::V1::PostsController < Api::V1::BaseController
   private
 
   def post_update_params
-    params.require(:post).permit(:content)
+    params.require(:post).permit(:content, :level)
   end
 end
