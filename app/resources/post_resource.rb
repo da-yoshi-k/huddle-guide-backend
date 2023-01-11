@@ -3,5 +3,5 @@ class PostResource
 
   root_key :post, :posts
 
-  attributes :id, :content, :user_id, :workshop_id
+  attributes :id, :content, :user_id, :workshop_id, :level
 end

@@ -4,6 +4,7 @@
 #
 #  id          :bigint           not null, primary key
 #  content     :string           not null
+#  level       :integer          default(0)
 #  type        :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
@@ -23,6 +24,8 @@
 class Post < ApplicationRecord
   belongs_to :user
   belongs_to :workshop
+
+  enum role: { general: 0, beginner: 1, casual: 2, hardcore: 3 }
 
   validates :content, presence: true, length: { maximum: 255 }
 end
