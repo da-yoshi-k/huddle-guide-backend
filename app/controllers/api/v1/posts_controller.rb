@@ -38,7 +38,8 @@ class Api::V1::PostsController < Api::V1::BaseController
       post_params = {
         content: params[:post][:content],
         user: current_user,
-        workshop: workshop
+        workshop: workshop,
+        level: params[:post][:level],
       }
       post = Post.new(post_params)
       post.save
