@@ -11,13 +11,13 @@ class Api::V1::PostsController < Api::V1::BaseController
   def create
     workshop = Workshop.where(team_id: current_user.teams).find(params[:workshop_id])
     for i in 0..2
-      next if params[:posts][i][:content] == ""
+      next if params[:posts][i][:content] == ''
 
       post_params = {
         content: params[:posts][i][:content],
         user: current_user,
-        workshop: workshop,
-        level: params[:posts][i][:level],
+        workshop:,
+        level: params[:posts][i][:level]
       }
       post = Post.new(post_params)
       post.save
@@ -38,8 +38,8 @@ class Api::V1::PostsController < Api::V1::BaseController
       post_params = {
         content: params[:post][:content],
         user: current_user,
-        workshop: workshop,
-        level: params[:post][:level],
+        workshop:,
+        level: params[:post][:level]
       }
       post = Post.new(post_params)
       post.save
