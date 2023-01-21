@@ -22,7 +22,8 @@ class Api::V1::TeamsController < Api::V1::BaseController
     unless @team.save
       return render_400(nil, @team.errors.full_messages)
     end
-    member = Member.create(user: current_user, team: @team, role: :admin)
+
+    Member.create(user: current_user, team: @team, role: :admin)
     json_str = TeamResource.new(@team).serialize
     render json: json_str
   end

@@ -9,7 +9,6 @@ class Api::V1::WorkshopsController < Api::V1::BaseController
 
   def show
     workshop = Workshop.where(team_id: current_user.teams).find(params[:id])
-    participants = workshop.users
     json_str = WorkshopResource.new(workshop).serialize
     render json: json_str
   end
@@ -24,7 +23,7 @@ class Api::V1::WorkshopsController < Api::V1::BaseController
     }
     workshop = Workshop.new(workshop_params)
     if workshop.save
-      participation = Participation.create(user: current_user, workshop: workshop)
+      Participation.create(user: current_user, workshop:)
       json_str = WorkshopResource.new(workshop).serialize
       render json: json_str
     else
