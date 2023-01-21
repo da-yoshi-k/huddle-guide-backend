@@ -25,7 +25,5 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :workshop
 
-  enum role: { general: 0, beginner: 1, casual: 2, hardcore: 3 }
-
-  validates :content, presence: true, length: { maximum: 255 }
+  validates :content, presence: true, length: { maximum: 20 }
 end

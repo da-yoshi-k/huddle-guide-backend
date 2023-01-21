@@ -2,7 +2,7 @@ class Api::V1::WorkshopsController < Api::V1::BaseController
   before_action :authenticate!
 
   def index
-    workshops = Workshop.where(teams: current_user.teams).includes([:users]).includes([:work]).includes([:work_step]).includes([:team])
+    workshops = Workshop.where(teams: current_user.teams).includes([:users]).includes([:work]).includes([:work_step]).includes([:team]).order(created_at: :desc).limit(10)
     json_str = WorkshopResource.new(workshops).serialize
     render json: json_str
   end

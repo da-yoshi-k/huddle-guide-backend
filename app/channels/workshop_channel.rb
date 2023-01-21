@@ -23,6 +23,14 @@ class WorkshopChannel < ApplicationCable::Channel
     ActionCable.server.broadcast("workshop:#{params[:room]}", content)
   end
 
+  def edit_posts
+    content = {
+      type: 'edit_posts',
+      body: {}
+    }
+    ActionCable.server.broadcast("workshop:#{params[:room]}", content)
+  end
+
   def end_workshop
     content = {
       type: 'end_workshop',
