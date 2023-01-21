@@ -33,3 +33,4 @@
 
 .env
 .vscode
+.solargraph.yml
