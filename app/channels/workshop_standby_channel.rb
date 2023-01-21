@@ -7,10 +7,10 @@ class WorkshopStandbyChannel < ApplicationCable::Channel
     # Any cleanup needed when channel is unsubscribed
   end
 
-  def start_workshop(data)
+  def start_workshop
     content = {
       type: 'start_workshop',
-      body: {},
+      body: {}
     }
     ActionCable.server.broadcast("workshop_standby:#{params[:room]}", content)
   end

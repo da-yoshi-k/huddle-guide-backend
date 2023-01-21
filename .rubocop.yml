@@ -6,6 +6,8 @@ AllCops:
     - "bin/**/*"
     - "spec/**/*"
     - "node_modules/**/*"
+    - "lib/tasks/*"
+    - "app/controllers/concerns/api/*"
   DisplayCopNames: true
 
 Layout/MultilineBlockLayout:

@@ -2,11 +2,6 @@ class Api::V1::UsersController < Api::V1::BaseController
   before_action :authenticate!, only: %i[me search]
 
   def create
-    user_params = {
-      name: params[:user][:name],
-      email: params[:user][:email],
-      password: params[:user][:password]
-    }
     user = User.new(user_params)
     if user.save
       json_str = UserResource.new(user).serialize
@@ -22,16 +17,24 @@ class Api::V1::UsersController < Api::V1::BaseController
   end
 
   def search
-    if user = User.where(email: params[:user][:email]).first
-      json_str = UserResource.new(user).serialize
-      render json: json_str
-    else
-      json_str = '{"user":{}}'
-      render json: json_str
-    end
+    user = User.where(user_search_params).first
+    json_str = if user
+                 UserResource.new(user).serialize
+               else
+                 '{"user":{}}'
+               end
+    render json: json_str
   end
 
   private
 
   def form_authenticity_token; end
+
+  def user_params
+    params.require(:user).permit(:name, :email, :password)
+  end
+
+  def user_search_params
+    params.require(:user).permit(:email)
+  end
 end

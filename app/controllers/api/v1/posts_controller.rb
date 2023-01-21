@@ -9,54 +9,21 @@ class Api::V1::PostsController < Api::V1::BaseController
   end
 
   def create
-    workshop = Workshop.where(team_id: current_user.teams).find(params[:workshop_id])
-    for i in 0..2
-      next if params[:posts][i][:content] == ""
+    count = Post.where(user: current_user.id, workshop: params[:workshop_id]).count
+    return unless count <= 3
 
-      post_params = {
-        content: params[:posts][i][:content],
-        user: current_user,
-        workshop: workshop,
-        level: params[:posts][i][:level],
-      }
-      post = Post.new(post_params)
-      post.save
-    end
-    posts = Post.where(workshop_id: workshop.id)
-    content = {
-      type: 'create_post',
-      body: {}
-    }
-    ActionCable.server.broadcast("workshop:#{workshop.id}", content)
-    json_str = PostResource.new(posts).serialize
-    render json: json_str
+    post = Post.new(post_params)
+    post.save
   end
 
   def update
-    workshop = Workshop.where(team_id: current_user.teams).find(params[:workshop_id])
-    if params[:post][:id] == 0
-      post_params = {
-        content: params[:post][:content],
-        user: current_user,
-        workshop: workshop,
-        level: params[:post][:level],
-      }
-      post = Post.new(post_params)
-      post.save
-    else
-      post = current_user.posts.find(params[:post][:id])
-      post.update(post_update_params)
-    end
-    content = {
-      type: 'edit_post',
-      body: {}
-    }
-    ActionCable.server.broadcast("workshop:#{workshop.id}", content)
+    post = current_user.posts.find(params[:post][:id])
+    post.update(post_params)
   end
 
   private
 
-  def post_update_params
-    params.require(:post).permit(:content, :level)
+  def post_params
+    params.require(:post).permit(:content, :level).merge(user_id: current_user.id, workshop_id: params[:workshop_id])
   end
 end

@@ -1,3 +1,4 @@
+# rubocop:disable　Style/VariableNumber
 module Api::ExceptionHandler
   extend ActiveSupport::Concern
 
@@ -23,10 +24,11 @@ module Api::ExceptionHandler
 
   def render_error(code, message, *error_messages)
     response = {
-      message: message,
+      message:,
       errors: error_messages.compact
     }
 
     render json: response, status: code
   end
 end
+# rubocop:enable　Style/VariableNumber

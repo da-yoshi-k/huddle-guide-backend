@@ -4,8 +4,7 @@ class Api::V1::AuthenticationsController < Api::V1::BaseController
 
     if user
       token = user.create_tokens
-      json_str = UserResource.new(user).serialize
-      render json: { token: token }
+      render json: { token: }
     else
       head :unauthorized
     end

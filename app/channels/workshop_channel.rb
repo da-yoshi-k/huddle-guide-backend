@@ -7,26 +7,34 @@ class WorkshopChannel < ApplicationCable::Channel
     # Any cleanup needed when channel is unsubscribed
   end
 
-  def update_work_step(data)
+  def update_work_step
     content = {
       type: 'update_work_step',
-      body: {},
+      body: {}
     }
     ActionCable.server.broadcast("workshop:#{params[:room]}", content)
   end
 
-  def update_presenter(data)
+  def update_presenter
     content = {
       type: 'update_presenter',
-      body: {},
+      body: {}
     }
     ActionCable.server.broadcast("workshop:#{params[:room]}", content)
   end
 
-  def end_workshop(data)
+  def edit_posts
+    content = {
+      type: 'edit_posts',
+      body: {}
+    }
+    ActionCable.server.broadcast("workshop:#{params[:room]}", content)
+  end
+
+  def end_workshop
     content = {
       type: 'end_workshop',
-      body: {},
+      body: {}
     }
     ActionCable.server.broadcast("workshop:#{params[:room]}", content)
   end
