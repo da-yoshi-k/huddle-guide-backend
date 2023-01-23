@@ -13,8 +13,9 @@
 #
 # Indexes
 #
-#  index_posts_on_user_id      (user_id)
-#  index_posts_on_workshop_id  (workshop_id)
+#  index_posts_on_content_and_user_id_and_workshop_id  (content,user_id,workshop_id) UNIQUE
+#  index_posts_on_user_id                              (user_id)
+#  index_posts_on_workshop_id                          (workshop_id)
 #
 # Foreign Keys
 #
@@ -26,4 +27,5 @@ class Post < ApplicationRecord
   belongs_to :workshop
 
   validates :content, presence: true, length: { maximum: 20 }
+  validates :content, uniqueness: { scope: %i[user_id workshop_id] }
 end
