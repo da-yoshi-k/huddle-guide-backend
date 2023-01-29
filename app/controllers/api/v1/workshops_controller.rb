@@ -14,13 +14,6 @@ class Api::V1::WorkshopsController < Api::V1::BaseController
   end
 
   def create
-    workshop_params = {
-      work_id: params[:workshop][:work_id],
-      team_id: params[:workshop][:team_id],
-      work_step_id: 1,
-      work_date: Time.current,
-      facilitator: current_user.id
-    }
     workshop = Workshop.new(workshop_params)
     if workshop.save
       Participation.create(user: current_user, workshop:)
@@ -37,6 +30,10 @@ class Api::V1::WorkshopsController < Api::V1::BaseController
   end
 
   private
+
+  def workshop_params
+    params.require(:workshop).permit(:work_id, :team_id).merge(work_step_id: 1, work_date: Time.current, facilitator: current_user.id)
+  end
 
   def workshop_update_params
     params.require(:workshop).permit(:work_step_id, :facilitator, :presenter)
