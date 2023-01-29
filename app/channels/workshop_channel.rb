@@ -1,6 +1,11 @@
 class WorkshopChannel < ApplicationCable::Channel
   def subscribed
     stream_from("workshop:#{params[:room]}")
+    content = {
+      type: 'join_workshop',
+      body: {}
+    }
+    ActionCable.server.broadcast("workshop:#{params[:room]}", content)
   end
 
   def unsubscribed
