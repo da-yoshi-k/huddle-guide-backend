@@ -18,6 +18,8 @@ class WorkshopChannel < ApplicationCable::Channel
       body: {}
     }
     ActionCable.server.broadcast("workshop:#{params[:room]}", content)
+  rescue StandardError => e
+    logger.error e
   end
 
   def update_presenter

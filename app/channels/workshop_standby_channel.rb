@@ -1,6 +1,8 @@
 class WorkshopStandbyChannel < ApplicationCable::Channel
   def subscribed
     stream_from("workshop_standby:#{params[:room]}")
+  rescue StandardError => e
+    logger.error e
   end
 
   def unsubscribed
@@ -13,5 +15,7 @@ class WorkshopStandbyChannel < ApplicationCable::Channel
       body: {}
     }
     ActionCable.server.broadcast("workshop_standby:#{params[:room]}", content)
+  rescue StandardError => e
+    logger.error e
   end
 end
