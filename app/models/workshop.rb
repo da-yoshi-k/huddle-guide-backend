@@ -25,9 +25,9 @@
 #  fk_rails_...  (work_step_id => work_steps.id)
 #
 class Workshop < ApplicationRecord
-  has_many :participations
+  has_many :participations, -> { order(:id) }
   has_many :messages
-  has_many :posts
+  has_many :posts, -> { order(:id) }
   has_many :users, through: :participations
 
   belongs_to :team
