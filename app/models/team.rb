@@ -9,7 +9,7 @@
 #  updated_at  :datetime         not null
 #
 class Team < ApplicationRecord
-  has_many :members, dependent: :destroy
+  has_many :members, -> { order(:id) }, dependent: :destroy
   has_many :users, through: :members
 
   validates :name, presence: true, length: { maximum: 20 }
