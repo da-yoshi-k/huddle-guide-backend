@@ -14,10 +14,6 @@ class Api::V1::TeamsController < Api::V1::BaseController
   end
 
   def create
-    team_params = {
-      name: params[:team][:name],
-      description: params[:team][:description]
-    }
     @team = Team.new(team_params)
     unless @team.save
       return render_400(nil, @team.errors.full_messages)
@@ -26,5 +22,16 @@ class Api::V1::TeamsController < Api::V1::BaseController
     Member.create(user: current_user, team: @team, role: :admin)
     json_str = TeamResource.new(@team).serialize
     render json: json_str
+  end
+
+  def update
+    team = current_user.teams.find(params[:id])
+    team.update(team_params)
+  end
+
+  private
+
+  def team_params
+    params.require(:team).permit(:name, :description)
   end
 end

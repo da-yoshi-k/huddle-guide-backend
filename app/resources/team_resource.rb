@@ -6,4 +6,5 @@ class TeamResource
   attributes :id, :name, :description
 
   many :users, resource: UserResource
+  many :members, resource: MemberResource
 end
