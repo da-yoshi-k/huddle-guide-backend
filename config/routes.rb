@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       resource :authentication, only: %i[create]
       resources :profile
       resources :teams do
-        resources :members, only: %i[create destroy]
+        resources :members, only: %i[create update destroy]
       end
       resources :workshops do
         resources :participations, only: %i[create]
