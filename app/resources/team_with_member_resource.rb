@@ -1,4 +1,4 @@
-class TeamResource
+class TeamWithMemberResource
   include Alba::Resource
 
   root_key :team, :teams
@@ -6,4 +6,5 @@ class TeamResource
   attributes :id, :name, :description
 
   many :users, resource: UserResource
+  many :members, resource: MemberResource
 end

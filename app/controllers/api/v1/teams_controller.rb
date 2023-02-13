@@ -2,14 +2,14 @@ class Api::V1::TeamsController < Api::V1::BaseController
   before_action :authenticate!
 
   def index
-    teams = current_user.teams.includes([:users])
+    teams = current_user.teams.includes([:users]).order(:created_at)
     json_str = TeamResource.new(teams).serialize
     render json: json_str
   end
 
   def show
     team = current_user.teams.find(params[:id])
-    json_str = TeamResource.new(team).serialize
+    json_str = TeamWithMemberResource.new(team).serialize
     render json: json_str
   end
 
@@ -27,6 +27,11 @@ class Api::V1::TeamsController < Api::V1::BaseController
   def update
     team = current_user.teams.find(params[:id])
     team.update(team_params)
+  end
+
+  def destroy
+    team = Team.find(params[:id])
+    team.destroy!
   end
 
   private
