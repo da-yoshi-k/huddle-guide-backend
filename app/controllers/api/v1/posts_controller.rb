@@ -21,6 +21,11 @@ class Api::V1::PostsController < Api::V1::BaseController
     post.update(post_params)
   end
 
+  def destroy
+    post = current_user.posts.find(params[:id])
+    post.destroy!
+  end
+
   private
 
   def post_params
