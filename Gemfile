@@ -71,5 +71,6 @@ group :test do
   gem 'webdrivers'
 end
 
-# https://github.com/rails/rails/pull/45478#issuecomment-1315866532 に対応するための記述
-gem 'actioncable_redis-reconnect', '~> 0.1.0'
+# Rails7.1に導入されるActionCableのリカバリー用のGem
+# https://github.com/anycable/action-cable-redis-backport
+gem "action-cable-redis-backport"

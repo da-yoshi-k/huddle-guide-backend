@@ -1,13 +1,13 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    action-cable-redis-backport (1.0.0)
+      actioncable (>= 5.0, < 7.1)
     actioncable (7.0.4)
       actionpack (= 7.0.4)
       activesupport (= 7.0.4)
       nio4r (~> 2.0)
       websocket-driver (>= 0.6.1)
-    actioncable_redis-reconnect (0.1.0)
-      actioncable (>= 7.0, <= 7.0.4)
     actionmailbox (7.0.4)
       actionpack (= 7.0.4)
       activejob (= 7.0.4)
@@ -316,7 +316,7 @@ PLATFORMS
   x86_64-darwin-21
 
 DEPENDENCIES
-  actioncable_redis-reconnect (~> 0.1.0)
+  action-cable-redis-backport
   alba
   annotate
   bootsnap
