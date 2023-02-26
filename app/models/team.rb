@@ -14,5 +14,4 @@ class Team < ApplicationRecord
   has_many :workshops, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 20 }
-  validates :members, length: { maximum: 6 }
 end

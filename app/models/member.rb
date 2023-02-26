@@ -27,4 +27,9 @@ class Member < ApplicationRecord
 
   validates :user_id, uniqueness: { scope: :team_id }
   validates :role, presence: true
+  validate :team_member_limit, on: :create
+
+  def team_member_limit
+    errors.add(:base, 'チームへの最大の参加人数を超えています') if team.members.size >= 8
+  end
 end
