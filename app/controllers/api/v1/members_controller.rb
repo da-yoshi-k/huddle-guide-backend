@@ -4,7 +4,13 @@ class Api::V1::MembersController < Api::V1::BaseController
   def create
     team = current_user.teams.find(params[:team_id])
     user = User.find(params[:user][:id])
-    Member.create(team:, user:)
+    member = Member.new(team:, user:)
+    if member.save
+      json_str = MemberResource.new(member).serialize
+      render json: json_str
+    else
+      render_400(nil, member.errors.full_messages)
+    end
   end
 
   def update
