@@ -51,6 +51,9 @@ gem 'fog-aws'
 # i18n
 gem 'rails-i18n', '~> 7.0.0'
 
+# GoogleAuth
+gem 'googleauth'
+
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails', '~> 6.0.0'
@@ -73,4 +76,4 @@ end
 
 # Rails7.1に導入されるActionCableのリカバリー用のGem
 # https://github.com/anycable/action-cable-redis-backport
-gem "action-cable-redis-backport"
+gem 'action-cable-redis-backport'

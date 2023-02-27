@@ -20,6 +20,7 @@ Rails.application.routes.draw do
         resources :messages, only: %i[index create]
         resources :posts, only: %i[index create update destroy]
       end
+      post '/google_login_api/callback', to: 'google_login_api#callback'
     end
   end
 end
