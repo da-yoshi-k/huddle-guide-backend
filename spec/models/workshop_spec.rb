@@ -2,15 +2,17 @@
 #
 # Table name: workshops
 #
-#  id           :uuid             not null, primary key
-#  facilitator  :string
-#  presenter    :string
-#  work_date    :datetime
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  team_id      :uuid             not null
-#  work_id      :bigint           not null
-#  work_step_id :bigint           not null
+#  id              :uuid             not null, primary key
+#  facilitator     :string
+#  presenter       :string
+#  turn_start_time :datetime
+#  work_date       :datetime
+#  work_start_time :datetime
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  team_id         :uuid             not null
+#  work_id         :bigint           not null
+#  work_step_id    :bigint           not null
 #
 # Indexes
 #

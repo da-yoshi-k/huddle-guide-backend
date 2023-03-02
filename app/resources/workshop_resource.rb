@@ -3,7 +3,7 @@ class WorkshopResource
 
   root_key :workshop, :workshops
 
-  attributes :id, :team_id, :work_id, :work_step_id, :work_date, :facilitator, :presenter
+  attributes :id, :team_id, :work_id, :work_step_id, :work_date, :facilitator, :presenter, :work_start_time, :turn_start_time
 
   many :users, resource: UserResource
   one :work, resource: WorkResource
