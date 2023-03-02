@@ -36,6 +36,6 @@ class Api::V1::WorkshopsController < Api::V1::BaseController
   end
 
   def workshop_update_params
-    params.require(:workshop).permit(:work_step_id, :facilitator, :presenter)
+    params.require(:workshop).permit(:work_step_id, :facilitator, :presenter, :work_start_time, :turn_start_time)
   end
 end

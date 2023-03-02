@@ -7,7 +7,7 @@
 #  crypted_password :string
 #  description      :text
 #  email            :string           not null
-#  login_type       :integer          default(0), not null
+#  login_type       :integer          default("default"), not null
 #  name             :string           not null
 #  salt             :string
 #  created_at       :datetime         not null
