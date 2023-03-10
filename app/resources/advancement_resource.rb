@@ -3,5 +3,5 @@ class AdvancementResource
 
   root_key :advancement, :advancements
 
-  attributes :id, :content, :user_id, :workshop_id, :type
+  attributes :id, :content, :user_id, :workshop_id, :advancement_type
 end

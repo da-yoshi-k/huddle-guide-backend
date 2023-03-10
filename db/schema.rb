@@ -17,7 +17,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_10_073455) do
 
   create_table "advancements", force: :cascade do |t|
     t.string "content", null: false
-    t.integer "type", default: 0, null: false
+    t.integer "advancement_type", default: 0, null: false
     t.uuid "user_id", null: false
     t.uuid "workshop_id", null: false
     t.datetime "created_at", null: false

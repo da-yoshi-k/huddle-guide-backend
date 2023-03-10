@@ -2,13 +2,13 @@
 #
 # Table name: advancements
 #
-#  id          :bigint           not null, primary key
-#  content     :string           not null
-#  type        :integer          default(0), not null
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  user_id     :uuid             not null
-#  workshop_id :uuid             not null
+#  id               :bigint           not null, primary key
+#  advancement_type :integer          default(0), not null
+#  content          :string           not null
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  user_id          :uuid             not null
+#  workshop_id      :uuid             not null
 #
 # Indexes
 #
