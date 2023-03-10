@@ -19,6 +19,7 @@ Rails.application.routes.draw do
         resources :participations, only: %i[create]
         resources :messages, only: %i[index create]
         resources :posts, only: %i[index create update destroy]
+        resources :advancements, only: %i[index create update]
       end
       post '/google_login_api/callback', to: 'google_login_api#callback'
     end

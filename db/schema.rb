@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_01_163012) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_10_073455) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "advancements", force: :cascade do |t|
+    t.string "content", null: false
+    t.integer "type", default: 0, null: false
+    t.uuid "user_id", null: false
+    t.uuid "workshop_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_advancements_on_user_id"
+    t.index ["workshop_id"], name: "index_advancements_on_workshop_id"
+  end
 
   create_table "members", force: :cascade do |t|
     t.integer "role", default: 0, null: false
@@ -115,6 +126,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_01_163012) do
     t.index ["work_step_id"], name: "index_workshops_on_work_step_id"
   end
 
+  add_foreign_key "advancements", "users"
+  add_foreign_key "advancements", "workshops"
   add_foreign_key "members", "teams"
   add_foreign_key "members", "users"
   add_foreign_key "messages", "users"
