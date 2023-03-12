@@ -24,6 +24,6 @@ class Advancement < ApplicationRecord
   belongs_to :user
   belongs_to :workshop
 
-  validates :content, presence: true, length: { maximum: 20 }
+  validates :content, presence: true, length: { maximum: 50 }
   validates :content, uniqueness: { scope: %i[user_id workshop_id] }
 end
