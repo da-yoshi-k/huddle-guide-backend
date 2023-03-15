@@ -62,10 +62,10 @@ group :development, :test do
   gem 'rubocop-rails'
   gem 'rubocop-checkstyle_formatter'
   gem 'faker'
+  gem 'bullet'
 end
 
 group :development do
-  gem 'bullet'
   gem 'annotate'
 end
 
