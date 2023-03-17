@@ -42,4 +42,10 @@ RSpec.describe User, type: :model do
       expect(build(:user, :user_with_google_login, password: nil)).to be_valid
     end
   end
+
+  describe 'associations' do
+    it { should have_many(:members) }
+    it { should have_many(:teams).through(:members) }
+    it { should have_many(:advancements) }
+  end
 end

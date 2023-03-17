@@ -29,5 +29,15 @@
 require 'rails_helper'
 
 RSpec.describe Workshop, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'validations' do
+    it 'should be valid if there are 6 participations' do
+      workshop = build(:workshop, participations: build_list(:participation, 6))
+      expect(workshop).to be_valid
+    end
+
+    it 'should not be valid if there are more than 6 participations' do
+      workshop = build(:workshop, participations: build_list(:participation, 7))
+      expect(workshop).not_to be_valid
+    end
+  end
 end

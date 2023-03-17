@@ -8,10 +8,8 @@ require 'factory_bot_rails'
   end
 end
 
-steps = [:waiting, :being_posted, :presentation, :chatting, :closed]
+steps = %i[waiting being_posted presentation chatting closed]
 
-first_work = FactoryBot.create(:work, :finding_common_interets)
-second_work = FactoryBot.create(:work, :good_and_new)
-steps.each{|step|
-  FactoryBot.create(:work_step, step)
-}
+FactoryBot.create(:work, :finding_common_interets)
+FactoryBot.create(:work, :good_and_new)
+steps.each { |step| FactoryBot.create(:work_step, step) }

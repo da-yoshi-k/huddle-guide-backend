@@ -28,11 +28,13 @@
 #
 FactoryBot.define do
   factory :workshop do
-    team { nil }
-    work { nil }
-    work_step { nil }
-    work_date { "2022-12-07 02:06:51" }
-    facilitator { "MyString" }
-    presenter { "MyString" }
+    association :team
+    association :work, :finding_common_interets
+    association :work_step, :chatting
+    work_date { '2022-12-07 02:06:51' }
+    work_start_time { '2022-12-07 02:06:51' }
+    turn_start_time { '2022-12-07 02:06:51' }
+    facilitator { 'facilitator_id' }
+    presenter { 'presenter_id'}
   end
 end
