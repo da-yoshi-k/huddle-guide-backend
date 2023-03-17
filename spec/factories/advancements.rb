@@ -22,8 +22,8 @@
 #
 FactoryBot.define do
   factory :advancement do
-    content { "MyString" }
-    advancement_type { 1 }
+    content { 'MyString' }
+    advancement_type { rand(2) }
     user { nil }
     workshop { nil }
   end

@@ -21,8 +21,8 @@
 #
 FactoryBot.define do
   factory :message do
-    user { nil }
-    workshop { nil }
-    content { "MyString" }
+    association :user
+    association :workshop
+    content { 'MyString' }
   end
 end

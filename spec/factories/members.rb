@@ -25,4 +25,8 @@ FactoryBot.define do
     association :user
     association :team
   end
+
+  trait :admin do
+    role { 1 }
+  end
 end

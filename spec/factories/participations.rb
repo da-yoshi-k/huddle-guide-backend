@@ -21,8 +21,8 @@
 #
 FactoryBot.define do
   factory :participation do
-    user { nil }
-    workshop { nil }
-    is_active { false }
+    association :user
+    association :workshop
+    is_active { true }
   end
 end
