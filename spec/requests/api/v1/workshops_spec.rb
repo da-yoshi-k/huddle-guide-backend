@@ -74,7 +74,6 @@ RSpec.describe 'Api::V1::Workshops', type: :request do
     it 'returns http success' do
       team = current_user.teams.first
       work = create(:work, :finding_common_interets)
-      pp workshop: { team_id: team.id, work_id: work.id }
       post '/api/v1/workshops', params: { workshop: { team_id: team.id, work_id: work.id } }
       expect(response).to have_http_status(:success)
     end
