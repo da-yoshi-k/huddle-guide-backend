@@ -62,16 +62,17 @@ group :development, :test do
   gem 'rubocop-rails'
   gem 'rubocop-checkstyle_formatter'
   gem 'faker'
+  gem 'bullet'
 end
 
 group :development do
-  gem 'bullet'
   gem 'annotate'
 end
 
 group :test do
   gem 'capybara'
   gem 'webdrivers'
+  gem 'shoulda-matchers', '~> 5.0'
 end
 
 # Rails7.1に導入されるActionCableのリカバリー用のGem

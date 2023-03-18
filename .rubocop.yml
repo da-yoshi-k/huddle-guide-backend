@@ -12,7 +12,7 @@ AllCops:
 
 Layout/MultilineBlockLayout:
   Exclude:
-    - "spec/**/*_spec.rb"
+    - "spec/**/*"
 
 Layout/LineLength:
   Enabled: false
@@ -25,7 +25,7 @@ Metrics/BlockLength:
   Exclude:
     - "Gemfile"
     - "config/**/*"
-    - "spec/**/*_spec.rb"
+    - "spec/**/*"
 
 Metrics/ClassLength:
   CountComments: false
@@ -47,7 +47,7 @@ Style/AsciiComments:
 
 Style/BlockDelimiters:
   Exclude:
-    - "spec/**/*_spec.rb"
+    - "spec/**/*"
 
 Style/ClassAndModuleChildren:
   Enabled: false

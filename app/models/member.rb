@@ -30,6 +30,6 @@ class Member < ApplicationRecord
   validate :team_member_limit, on: :create
 
   def team_member_limit
-    errors.add(:base, 'チームへの最大の参加人数を超えています') if team.members.size >= 8
+    errors.add(:base, 'チームへの最大の参加人数を超えています') if team.members.count >= 8
   end
 end
