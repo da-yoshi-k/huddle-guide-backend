@@ -30,11 +30,11 @@ FactoryBot.define do
   factory :workshop do
     association :team
     association :work, :finding_common_interets
-    association :work_step, :chatting
+    association :work_step, :waiting
     work_date { '2022-12-07 02:06:51' }
     work_start_time { '2022-12-07 02:06:51' }
     turn_start_time { '2022-12-07 02:06:51' }
     facilitator { 'facilitator_id' }
-    presenter { 'presenter_id'}
+    presenter { 'presenter_id' }
   end
 end

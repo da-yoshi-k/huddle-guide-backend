@@ -8,5 +8,7 @@ class WorkshopResource
   many :users, resource: UserResource
   one :work, resource: WorkResource
   one :work_step, resource: WorkStepResource
-  one :team, resource: TeamResource
+  one :team do
+    attributes :id, :name
+  end
 end

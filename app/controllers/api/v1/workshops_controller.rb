@@ -14,6 +14,8 @@ class Api::V1::WorkshopsController < Api::V1::BaseController
   end
 
   def create
+    return unless current_user.teams.find(params[:workshop][:team_id])
+
     workshop = Workshop.new(workshop_params)
     if workshop.save
       Participation.create(user: current_user, workshop:)

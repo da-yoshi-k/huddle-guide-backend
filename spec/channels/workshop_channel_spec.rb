@@ -1,5 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe WorkshopChannel, type: :channel do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:user) { create(:user) }
+  let(:workshop) { create(:workshop) }
+
+  before do
+    stub_connection current_user: user
+    subscribe workshop_id: workshop.id
+  end
+
+  it 'successfully subscribes' do
+    expect(subscription).to be_confirmed
+  end
 end
